@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    左边
+    左边  <TextComp/>
   </div>
 </template>
 

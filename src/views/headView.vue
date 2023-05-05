@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h3>我们一起低代码</h3>
+    <h3>我们一起学低代码</h3>
     <div class="btn-box">
       <div class="btn active">预览</div>
       <div class="btn active">保存</div>

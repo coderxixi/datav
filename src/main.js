@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
 import "@/assets/globa.less"
 import App from './App.vue'
-
-createApp(App).mount('#app')
+import { installComp } from "@/components"
+createApp(App).use(installComp).mount('#app')

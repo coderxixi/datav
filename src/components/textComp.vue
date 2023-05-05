@@ -1,11 +1,12 @@
 <template>
   <div class="wrapper" :style="setStyle">
-   <span>{{ data.txt }}</span>
+   <span>{{ data }}</span>
+   dsafnlkasdfklas
   </div>
 </template> 
 
 <script setup>
-import {computed} from "vue"
+import {computed,onMounted} from "vue"
 const props = defineProps({
   width: {
     type: [String, Number],
@@ -20,12 +21,8 @@ const props = defineProps({
     type: [String, Number],
   },
   data: {
-    type: Object,
-    default: () => {
-      return {
-        txt: '这里是默认文字 '
-      }
-    }
+    type:String ,
+    default:'😁' 
   }
 })
 const setStyle =computed(()=>{
@@ -35,6 +32,9 @@ const setStyle =computed(()=>{
     fontSize: props.fontSize+'px',
     color: props.color 
    }
+})
+onMounted(()=>{
+  console.log('组件怪哉');
 })
 </script>
 

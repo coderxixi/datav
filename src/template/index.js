@@ -1,9 +1,13 @@
-import { handl } from "./textComp";
+import { textComp } from "./textComp";
 
-let obj={
-  handl 
-} 
+let obj = {
+  TextComp: textComp
+}
 
-export  function getCompoent(info){
-  return obj[info.type]
+export function getCompoent(info) {
+
+  let component = obj[info.type]();
+  component.info = info
+
+  return component
 } 

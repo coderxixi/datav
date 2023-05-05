@@ -1,6 +1,7 @@
  
 import { getAttstr } from "@/utils"
-export function handl (){
+import TextComp from "@/components/textComp"
+export function textComp(){
   //对外暴露属性
   let attribute  =[
      {
@@ -12,7 +13,7 @@ export function handl (){
      },
     {
       key: 'height',
-      name: '宽度',
+      name: '高度',
       value: '40',
       type: 'input',
       placeholder: '哈哈'
@@ -20,26 +21,24 @@ export function handl (){
     {
       key: 'color',
       name: '文本颜色',
-      value: '100',
+      value: '#fff',
       type: 'color',
       placeholder: '请选择颜色 '
     },
     {
       key: 'fontSize',
       name: '字体大小',
-      value: '100',
+      value: '10',
       type: 'input',
       placeholder: '请输入字体大小 '
     }
   ]
 // 对外暴露数据
-  let data={
-    txt:'哈哈哈 '
-  }
+  let data='😀xixi'
    
   //对外暴露模版
 
-   let template = `<TextComp ${getAttstr(attribute )} data=${data}/> `
+  let template = TextComp   //`<TextComp ${getAttstr(attribute)} data='${data}'/> `
 
    return {
      attribute, data, template 

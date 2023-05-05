@@ -6,13 +6,23 @@ import RightView from "@/views/rightView";
 </script>
   
 <template>
-  <HeadView />
-  <LeftView />
-  <CenterView />
-  <RightView />
+  <div id="app">
+   <HeadView />
+   <div class="content-box">
+     <LeftView />
+    <CenterView />
+    <RightView /> 
+   </div>
+  </div>
+ 
+ 
 </template>
 
-<style scoped>
+<style lang="less">
+.content-box{
+  display: flex;
+  height: calc(100vh - 80px);
+}
 
 
 </style>

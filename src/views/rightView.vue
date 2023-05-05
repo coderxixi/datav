@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="warp">
     右边
   </div>
 </template>
@@ -8,4 +8,9 @@
 
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" >
+.warp{
+  width: 250px;
+}
+
+</style>

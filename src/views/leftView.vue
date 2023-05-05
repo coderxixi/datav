@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     左边
   </div>
 </template>
@@ -8,4 +8,8 @@
 
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.wrap{
+  width: 250px;
+}
+</style>

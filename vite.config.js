@@ -13,5 +13,15 @@ export default defineConfig({
       "@": resolve('src')
     },
     extensions: ['.vue', '.js','.json']
-  }
+  },
+  css: {
+    // css预处理器
+    preprocessorOptions: {
+      less: {
+        charset: false,
+        // additionalData: '@import "./src/assets/style/global.less";',
+      },
+    },
+  },
+
 })

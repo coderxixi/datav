@@ -1,5 +1,5 @@
 
-import { createApp } from 'vue'
+import { createApp,getCurrentInstance } from 'vue'
 export function getAttstr(attrs) {
   let attrStr = ``
   attrs.forEach(item => {
@@ -30,11 +30,18 @@ export function mountCompont(componten) {
         data[item.key] = item.value
       })
     }
-    data.data = componten.data
-    console.log('data', data);
-    let app1 = createApp(component, data);
-
-    app1.mount(`#${id}`)
+    data.data = componten.data;
+    const {left,top,zIndex } = componten.postion
+    let app = createApp(component, {...data,
+    left,
+    top,
+    zIndex,
+    postion:'absolute'
+    
+    });
+    console.log('app', componten);
+   
+    app.mount(`#${id}`)
   }, 200)
 
 }

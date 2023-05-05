@@ -28,13 +28,13 @@ export function textComp(){
     {
       key: 'fontSize',
       name: '字体大小',
-      value: '10',
+      value: '20',
       type: 'input',
       placeholder: '请输入字体大小 '
     }
   ]
 // 对外暴露数据
-  let data='😀xixi'
+  let data='😀xixijhsjhfjh开发'
    
   //对外暴露模版
 

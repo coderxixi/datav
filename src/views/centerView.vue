@@ -129,25 +129,30 @@ const mouseMove = (e) => {
 
   //设置组件的位置
   let com = document.getElementById(currentComp.value.info.id);
+  
   Object.assign(com.style, {
-    left: currentComp.value.position.left + offsetX + 'px',
-    top: currentComp.value.position.top + offsetY + 'px'
+    left: currentComp.value.postion.left + offsetX + 'px',
+    top: currentComp.value.postion.top + offsetY + 'px'
   })
   //设置选中框的位置
-  let borderComp = document.getElementById('borderBox')
+  let borderComp = document.getElementById('borderBox');
+ 
   Object.assign(borderComp.style, {
-    left: currentComp.value.position.left + offsetX + 'px',
-    top: currentComp.value.position.top + offsetY + 'px'
+    left: currentComp.value.postion.left + offsetX + 'px',
+    top: currentComp.value.postion.top + offsetY + 'px'
   })
 }
 //鼠标松开
-const mouseUp = () => {
+const mouseUp = (e) => {
   //移除事件
   document.removeEventListener('mousemove', mouseMove, true);
   document.removeEventListener('mouseup', mouseUp, true);
   //更新组件数据
-  currentComp.value.position.left += (e.clientX - startPosition.value.x);
-  currentComp.value.position.top += (e.clientY - startPosition.value.y)
+  console.log('currentCompcurrentComp', currentComp.value);
+  currentComp.value.postion.left = currentComp.value.postion.left+ (e.clientX - startPosition.value.x);
+  currentComp.value.postion.top = currentComp.value.postion.top+ (e.clientY - startPosition.value.y);
+   currentComp.value.boxStyle.left = currentComp.value.boxStyle.left + (e.clientX - startPosition.value.x);
+  currentComp.value.boxStyle.top = currentComp.value.boxStyle.top + (e.clientY - startPosition.value.y);
 }
 
 

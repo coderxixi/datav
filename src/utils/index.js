@@ -35,7 +35,7 @@ export function mountCompont(componten) {
     let app = createApp(component, {...data,
     });
    
-    
+    console.log('data', data);
     app.mount(`#${id}`)
   }, 200)
 

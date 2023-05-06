@@ -1,7 +1,8 @@
- 
+ import {toRaw} from "vue"
 import { getAttstr } from "@/utils"
 import TextComp from "@/components/textComp"
-export function textComp(){
+export function textComp(attr){
+ 
   //对外暴露属性
   let attribute  =[
      {
@@ -21,12 +22,12 @@ export function textComp(){
     {
       key: 'color',
       name: '文本颜色',
-      value: '#000',
+      value: '#A0B262',
       type: 'color',
       placeholder: '请选择颜色 '
     },
     {
-      key: 'font-size',
+      key: 'fontSize',
       name: '字体大小',
       value: '20',
       type: 'input',
@@ -36,7 +37,13 @@ export function textComp(){
 // 对外暴露数据
   let data='刘嘻嘻'
    
+ //更新操作
 
+ if(attr){
+   console.log('attr', attr.attribute);
+   attribute = toRaw(attr.attribute)
+   data = toRaw(attr.data) 
+ }
 
   //对外暴露模版
 

@@ -4,9 +4,9 @@ let obj = {
   TextComp: textComp
 }
 
-export function getCompoent(info) {
+export function getCompoent(info,attr) {
 
-  let component = obj[info.type]();
+  let component = obj[info.type](attr);
   component.info = info
   
 

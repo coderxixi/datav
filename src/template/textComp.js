@@ -21,12 +21,12 @@ export function textComp(){
     {
       key: 'color',
       name: '文本颜色',
-      value: '#fff',
+      value: '#000',
       type: 'color',
       placeholder: '请选择颜色 '
     },
     {
-      key: 'fontSize',
+      key: 'font-size',
       name: '字体大小',
       value: '20',
       type: 'input',
@@ -34,7 +34,7 @@ export function textComp(){
     }
   ]
 // 对外暴露数据
-  let data='😀⚽️'
+  let data='刘嘻嘻'
    
 
 

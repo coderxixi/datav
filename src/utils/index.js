@@ -33,8 +33,6 @@ export function mountCompont(componten) {
     data.data = componten.data;
     const {left,top,zIndex } = componten.postion
     let app = createApp(component, {...data,
- 
-    
     });
    
     

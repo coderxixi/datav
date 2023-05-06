@@ -10,6 +10,7 @@
 import { ref, computed, toRaw } from "vue";
 import { genId, mountCompont } from "@/utils";
 import { getCompoent } from "@/template";
+const emit=defineEmits(['currComp'])
 //当前组件
 let currentComp = ref(null);
 let components = ref([]);
@@ -108,7 +109,7 @@ const checkComp = (e) => {
   } else {
     currentComp.value = null
   }
-
+  emit('currComp', currentComp)
 
 }
 //鼠标按下回调

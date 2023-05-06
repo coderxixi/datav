@@ -1,8 +1,13 @@
 <script setup>
+import {ref} from "vue";
 import CenterView from "@/views/centerView";
 import HeadView from "@/views/headView";
 import LeftView from "@/views/leftView";
 import RightView from "@/views/rightView";
+const myCurrComp=ref(null)
+const currComp=(info)=>{
+  myCurrComp.value=info
+}
 </script>
   
 <template>
@@ -10,8 +15,8 @@ import RightView from "@/views/rightView";
    <HeadView />
    <div class="content-box">
      <LeftView />
-    <CenterView />
-    <RightView /> 
+    <CenterView @currComp="currComp"/>
+    <RightView :cpn="myCurrComp"/> 
    </div>
 </template>
 

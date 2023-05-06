@@ -8,6 +8,7 @@ export function getCompoent(info) {
 
   let component = obj[info.type]();
   component.info = info
+  
 
   return component
 } 

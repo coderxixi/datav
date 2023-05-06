@@ -1,9 +1,9 @@
-import { ref, onMounted } from "vue"
+import { ref, computed} from "vue"
 
-export function usePositioning() {
+export function usePosition() {
   const rootRef = ref(null);
-  onMounted(() => {
-   
+  const setPosition = computed(()=>{
+    return 
   })
   return rootRef
 }

@@ -1,5 +1,5 @@
 
-import { createApp,getCurrentInstance } from 'vue'
+import { createApp} from 'vue'
 export function getAttstr(attrs) {
   let attrStr = ``
   attrs.forEach(item => {
@@ -16,7 +16,7 @@ export const genId = () => { //获取随机ID，
       .toString(16)
       .substring(1);
   }
-  return 'q'+ s4() + s4() + s4();
+  return 'q'+s4() + s4()+'-'+ s4();
   // 0x10000：以0x开始的数据表示16进制，10000转成十进制数就是65536，实际上这是为了后面获取四位数随机号码所以乘以10000，而为了获取包含字母在内的字符就用16进制。
 }
 //挂载组件
@@ -33,14 +33,11 @@ export function mountCompont(componten) {
     data.data = componten.data;
     const {left,top,zIndex } = componten.postion
     let app = createApp(component, {...data,
-    left,
-    top,
-    zIndex,
-    postion:'absolute'
+ 
     
     });
-    console.log('app', componten);
    
+    
     app.mount(`#${id}`)
   }, 200)
 

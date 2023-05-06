@@ -6,16 +6,13 @@ import RightView from "@/views/rightView";
 </script>
   
 <template>
-  <div id="app">
+
    <HeadView />
    <div class="content-box">
      <LeftView />
     <CenterView />
     <RightView /> 
    </div>
-  </div>
- 
- 
 </template>
 
 <style lang="less">

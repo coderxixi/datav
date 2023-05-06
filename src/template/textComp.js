@@ -34,8 +34,10 @@ export function textComp(){
     }
   ]
 // 对外暴露数据
-  let data='😀xixijhsjhfjh开发'
+  let data='😀⚽️'
    
+
+
   //对外暴露模版
 
   let template = TextComp   //`<TextComp ${getAttstr(attribute)} data='${data}'/> `

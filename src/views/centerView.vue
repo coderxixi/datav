@@ -1,5 +1,5 @@
 <template>
-  <div class="warpper" @dragover="dragOver" @drop="drOp" @click="checkComp">
+  <div id="canvasBox" class="warpper" @dragover="dragOver" @drop="drOp" @click="checkComp">
     <div :id="item.info.id" :data-id="item.info.id" :style="[item.boxStyle]" v-for="(item, index) of components"
       :key="index"></div>
     <div @mousedown="mouseDownStart" id="borderBox" v-if="currentComp" class="borderStyle" :style="setBorderStyle"></div>
@@ -129,17 +129,19 @@ const mouseMove = (e) => {
 
   //设置组件的位置
   let com = document.getElementById(currentComp.value.info.id);
-  
+
   Object.assign(com.style, {
-    left: currentComp.value.postion.left + offsetX + 'px',
-    top: currentComp.value.postion.top + offsetY + 'px'
+    left: boundaryLimit('x', currentComp.value.postion.left + offsetX,currentComp)+  'px',
+    top: boundaryLimit('y', currentComp.value.postion.top + offsetY, currentComp) + 'px',
+    // currentComp.value.postion.top + offsetY + 'px'
   })
   //设置选中框的位置
   let borderComp = document.getElementById('borderBox');
- 
   Object.assign(borderComp.style, {
-    left: currentComp.value.postion.left + offsetX + 'px',
-    top: currentComp.value.postion.top + offsetY + 'px'
+    left: boundaryLimit('x', currentComp.value.postion.left + offsetX, currentComp) + 'px',
+    top: boundaryLimit('y', currentComp.value.postion.top + offsetY, currentComp) + 'px',
+    // left: currentComp.value.postion.left + offsetX + 'px',
+    // top: currentComp.value.postion.top + offsetY + 'px'
   })
 }
 //鼠标松开
@@ -149,10 +151,55 @@ const mouseUp = (e) => {
   document.removeEventListener('mouseup', mouseUp, true);
   //更新组件数据
   console.log('currentCompcurrentComp', currentComp.value);
-  currentComp.value.postion.left = currentComp.value.postion.left+ (e.clientX - startPosition.value.x);
-  currentComp.value.postion.top = currentComp.value.postion.top+ (e.clientY - startPosition.value.y);
-   currentComp.value.boxStyle.left = currentComp.value.boxStyle.left + (e.clientX - startPosition.value.x);
-  currentComp.value.boxStyle.top = currentComp.value.boxStyle.top + (e.clientY - startPosition.value.y);
+  currentComp.value.postion.left = boundaryLimit('x', currentComp.value.postion.left + (e.clientX - startPosition.value.x),currentComp);
+  currentComp.value.postion.top = boundaryLimit('y',  currentComp.value.postion.top + (e.clientY - startPosition.value.y), currentComp);
+  
+ 
+  currentComp.value.boxStyle.left = boundaryLimit('x', currentComp.value.postion.left + (e.clientX - startPosition.value.x), currentComp);
+  currentComp.value.boxStyle.top = boundaryLimit('y', currentComp.value.postion.top + (e.clientY - startPosition.value.y), currentComp);
+}
+//边界判断
+
+const boundaryLimit = (type, num, comp) => {
+  //计算出边界值
+  //画布的宽高
+  let canvas = document.getElementById('canvasBox');
+  let canvasWidth = canvas.clientWidth;
+  let canvasHeight = canvas.clientHeight;
+  //组件的宽高
+  let compWidth = 0;
+  let compHeight = 0;
+  comp.value.attribute.forEach((item) => {
+    if (item.key == 'width') {
+      compWidth = item.value
+    }
+    if (item.key == 'height') {
+      compHeight = item.height
+    }
+  })
+//边界值
+  let maxX = canvasWidth - compWidth;
+  let maxY = canvasHeight - compHeight;
+  let lastNum = 0;
+  if(type=="x"){
+    if(num<0){
+      lastNum=0;
+    }else if(num>maxX){
+     lastNum=maxX
+    }else{
+      lastNum=num
+    }
+  }else if(type=="y"){
+    if(num<0){
+      lastNum=0
+    }else if(num>maxY){
+      lastNum=maxY
+      
+    }else{
+      lastNum=num
+    }
+  }
+  return lastNum
 }
 
 
